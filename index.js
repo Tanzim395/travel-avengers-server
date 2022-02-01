@@ -10,8 +10,7 @@ const data = require("./data");
 const { MongoClient, ObjectId } = require("mongodb");
 const blogs = require("./data");
 
-// const uri = `mongodb+srv://sagar:${process.env.DB_PASSWORD}@cluster0.szflq.mongodb.net/sagar-travel-blog?retryWrites=true&w=majority`;
-
+//Mongo connecting URI
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.os44i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -168,7 +167,7 @@ async function run() {
       }
     });
 
-    // create user
+    // create new user
     app.post("/api/v1/user", async (req, res) => {
       try {
         const user = await Users.insertOne({ ...req.body, role: "user" });
